@@ -1,0 +1,70 @@
+package mapwriter.forge;
+
+import mapwriter.Mw;
+import net.minecraft.client.settings.KeyBinding;
+
+import org.lwjgl.input.Keyboard;
+
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
+
+public class MwKeyHandler {
+
+	public static KeyBinding keyMapGui = new KeyBinding("key.mw_open_gui", Keyboard.KEY_M, "MapWriter");
+	public static KeyBinding keyNewMarker = new KeyBinding("key.mw_new_marker", Keyboard.KEY_INSERT, "MapWriter");
+	public static KeyBinding keyMapMode = new KeyBinding("key.mw_next_map_mode", Keyboard.KEY_N, "MapWriter");
+	public static KeyBinding keyNextGroup = new KeyBinding("key.mw_next_marker_group", Keyboard.KEY_COMMA, "MapWriter");
+	public static KeyBinding keyTeleport = new KeyBinding("key.mw_teleport", Keyboard.KEY_PERIOD, "MapWriter");
+	public static KeyBinding keyZoomIn = new KeyBinding("key.mw_zoom_in", Keyboard.KEY_PRIOR, "MapWriter");
+	public static KeyBinding keyZoomOut = new KeyBinding("key.mw_zoom_out", Keyboard.KEY_NEXT, "MapWriter");
+	public static KeyBinding keyUndergroundMode = new KeyBinding("key.mw_underground_mode", Keyboard.KEY_U, "MapWriter");
+	//public static KeyBinding keyQuickLargeMap = new KeyBinding("key.mw_quick_large_map", Keyboard.KEY_NONE);
+	
+	public MwKeyHandler(){
+        ClientRegistry.registerKeyBinding(keyMapGui);
+        ClientRegistry.registerKeyBinding(keyNewMarker);
+        ClientRegistry.registerKeyBinding(keyMapMode);
+        ClientRegistry.registerKeyBinding(keyNextGroup);
+        ClientRegistry.registerKeyBinding(keyTeleport);
+        ClientRegistry.registerKeyBinding(keyZoomIn);
+        ClientRegistry.registerKeyBinding(keyZoomOut);
+        ClientRegistry.registerKeyBinding(keyUndergroundMode);
+	}
+
+    @SubscribeEvent
+    public void onKeyPress(InputEvent.KeyInputEvent event){
+        if(keyMapGui.isPressed()){
+            KeyBinding.setKeyBindState(keyMapGui.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyMapGui);
+        }
+        if(keyNewMarker.isPressed()){
+            KeyBinding.setKeyBindState(keyNewMarker.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyNewMarker);
+        }
+        if(keyMapMode.isPressed()){
+            KeyBinding.setKeyBindState(keyMapMode.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyMapMode);
+        }
+        if(keyNextGroup.isPressed()){
+            KeyBinding.setKeyBindState(keyNextGroup.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyNextGroup);
+        }
+        if(keyTeleport.isPressed()){
+            KeyBinding.setKeyBindState(keyTeleport.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyTeleport);
+        }
+        if(keyZoomIn.isPressed()){
+            KeyBinding.setKeyBindState(keyZoomIn.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyZoomIn);
+        }
+        if(keyZoomOut.isPressed()){
+            KeyBinding.setKeyBindState(keyZoomOut.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyZoomOut);
+        }
+        if(keyUndergroundMode.isPressed()){
+            KeyBinding.setKeyBindState(keyUndergroundMode.getKeyCode(), false);
+            Mw.instance.onKeyDown(keyUndergroundMode);
+        }
+    }
+}
